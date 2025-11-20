@@ -12,6 +12,7 @@ import UnlockScreen from '../screens/UnlockScreen';
 import VaultHomeScreen from '../screens/VaultHomeScreen';
 import PhotoDetailScreen from '../screens/PhotoDetailScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import ChangePinScreen from '../screens/ChangePinScreen';
 
 export type RootStackParamList = {
     Onboarding: undefined;
@@ -20,6 +21,7 @@ export type RootStackParamList = {
     VaultHome: undefined;
     PhotoDetail: { photoId: string; uri: string };
     Settings: undefined;
+    ChangePin: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -66,6 +68,7 @@ export default function RootNavigator() {
                         <Stack.Screen name="VaultHome" component={VaultHomeScreen} options={{ title: 'My Vault' }} />
                         <Stack.Screen name="PhotoDetail" component={PhotoDetailScreen} options={{ headerShown: false }} />
                         <Stack.Screen name="Settings" component={SettingsScreen} options={{ title: 'Settings' }} />
+                        <Stack.Screen name="ChangePin" component={ChangePinScreen} options={{ title: 'Change PIN' }} />
                     </>
                 )}
             </Stack.Navigator>

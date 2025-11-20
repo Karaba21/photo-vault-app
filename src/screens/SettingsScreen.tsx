@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Switch, Alert, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Switch, TouchableOpacity } from 'react-native';
 import { theme } from '../styles/theme';
 import ScreenContainer from '../components/ScreenContainer';
 import { Ionicons } from '@expo/vector-icons';
 import { useAuth } from '../context/AuthContext';
 import * as LocalAuthentication from 'expo-local-authentication';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../navigation/RootNavigator';
+
+type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
 export default function SettingsScreen() {
+    const navigation = useNavigation<NavigationProp>();
     const { checkBiometrics } = useAuth();
     const [biometricsSupported, setBiometricsSupported] = useState(false);
     const [biometricsEnabled, setBiometricsEnabled] = useState(false); // In a real app, persist this preference
@@ -18,7 +24,7 @@ export default function SettingsScreen() {
     }, []);
 
     const handleChangePin = () => {
-        Alert.alert('Change PIN', 'This feature would navigate to a Change PIN flow (verify old -> set new).');
+        navigation.navigate('ChangePin');
     };
 
     return (
