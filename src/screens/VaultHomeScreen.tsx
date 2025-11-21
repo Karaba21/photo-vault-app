@@ -70,7 +70,7 @@ export default function VaultHomeScreen() {
             style={styles.itemContainer}
             onPress={() => navigation.navigate('PhotoDetail', { photoId: item.id, uri: item.uri })}
         >
-            <Image source={{ uri: item.uri }} style={styles.thumbnail} />
+            <Image source={{ uri: item.uri }} style={styles.thumbnail} resizeMode="cover" />
         </TouchableOpacity>
     );
 
@@ -102,11 +102,14 @@ const styles = StyleSheet.create({
     itemContainer: {
         width: ITEM_SIZE,
         height: ITEM_SIZE,
-        padding: 1,
+        padding: 2,
     },
     thumbnail: {
-        flex: 1,
+        width: '100%',
+        height: '100%',
         backgroundColor: theme.colors.surface,
+        borderRadius: 4,
+        overflow: 'hidden',
     },
     fab: {
         position: 'absolute',
@@ -115,7 +118,7 @@ const styles = StyleSheet.create({
         width: 56,
         height: 56,
         borderRadius: 28,
-        backgroundColor: theme.colors.secondary,
+        backgroundColor: theme.colors.primary,
         justifyContent: 'center',
         alignItems: 'center',
         ...theme.shadows.medium,
