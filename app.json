@@ -33,7 +33,7 @@
       ]
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/logo_photo_vault.png"
     },
     "plugins": [
       "expo-secure-store",
