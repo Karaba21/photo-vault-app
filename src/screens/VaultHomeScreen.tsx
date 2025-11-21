@@ -14,7 +14,8 @@ type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'VaultHome'>
 
 const { width } = Dimensions.get('window');
 const COLUMN_COUNT = 3;
-const ITEM_SIZE = width / COLUMN_COUNT;
+const GAP = 1; // Minimal gap like iPhone Photos
+const ITEM_SIZE = (width - (GAP * (COLUMN_COUNT - 1))) / COLUMN_COUNT;
 
 export default function VaultHomeScreen() {
     const navigation = useNavigation<NavigationProp>();
@@ -85,6 +86,7 @@ export default function VaultHomeScreen() {
                     keyExtractor={item => item.id}
                     numColumns={COLUMN_COUNT}
                     contentContainerStyle={styles.listContent}
+                    columnWrapperStyle={styles.row}
                 />
             )}
 
@@ -99,17 +101,18 @@ const styles = StyleSheet.create({
     listContent: {
         paddingBottom: 100,
     },
+    row: {
+        gap: GAP,
+        marginBottom: GAP,
+    },
     itemContainer: {
-        width: ITEM_SIZE,
-        height: ITEM_SIZE,
-        padding: 2,
+        flex: 1,
+        aspectRatio: 1,
     },
     thumbnail: {
         width: '100%',
         height: '100%',
         backgroundColor: theme.colors.surface,
-        borderRadius: 4,
-        overflow: 'hidden',
     },
     fab: {
         position: 'absolute',
